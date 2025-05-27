@@ -11,6 +11,7 @@
 
 <button
     class={classes.join(' ')}
+    ontouchstart=""
     {...props}
 >
     {@render children?.()}
