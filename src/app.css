@@ -1,5 +1,5 @@
 :root {
-  font-family: 'Roboto', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Roboto', system-ui, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -249,7 +249,7 @@ button {
 
 aside {
   z-index: 90;
-  background-color: var(--md-sys-color-surface-container-high);
+  background-color: var(--md-sys-color-surface-container);
   max-width: 500px;
   padding: 12px;
   border-radius: 24px;
