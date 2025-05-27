@@ -58,6 +58,7 @@ button {
   color: inherit;
 
   cursor: pointer;
+  user-select: none;
 
   --_shadow-color-1: color-mix(in oklab, transparent, var(--md-sys-color-shadow) 30%);
   --_shadow-color-2: color-mix(in oklab, transparent, var(--md-sys-color-shadow) 15%);
