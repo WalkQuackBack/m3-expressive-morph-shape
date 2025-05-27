@@ -1,0 +1,291 @@
+:root {
+  font-family: 'Roboto', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--md-sys-color-on-surface);
+  background-color: var(--base-color, var(--md-sys-color-surface));
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: var(--md-sys-color-primary);
+  text-decoration: inherit;
+}
+a:hover {
+color: var(--md-sys-color-secondary);
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.card {
+  padding: 2em;
+}
+
+#app {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+button {
+  appearance: none;
+  border: none;
+
+  position: relative;
+
+  font: inherit;
+  font-weight: 500;
+
+  background: none;
+  color: inherit;
+
+  cursor: pointer;
+
+  --_shadow-color-1: color-mix(in oklab, transparent, var(--md-sys-color-shadow) 30%);
+  --_shadow-color-2: color-mix(in oklab, transparent, var(--md-sys-color-shadow) 15%);
+
+  box-shadow:
+    0px calc(1px*(clamp(0,var(--_level),1)
+      + clamp(0,var(--_level) - 3,1)
+      + 2*clamp(0,var(--_level) - 4,1)))
+    calc(1px*(2*clamp(0,var(--_level),1)
+      + clamp(0,var(--_level) - 2,1)
+      + clamp(0,var(--_level) - 4,1)))
+    0px var(--_shadow-color-1),
+
+    0px calc(1px*(clamp(0,var(--_level),1)
+      + clamp(0,var(--_level) - 1,1)
+      + 2*clamp(0,var(--_level) - 2,3)))
+    calc(1px*(3*clamp(0,var(--_level),2)
+      + 2*clamp(0,var(--_level) - 2,3)))
+    calc(1px*(clamp(0,var(--_level),4)
+      + 2*clamp(0,var(--_level) - 4,1)))
+      var(--_shadow-color-2);
+
+  transition:
+    350ms border-radius cubic-bezier(0.42, 1.67, 0.21, 0.90),
+    350ms box-shadow ease,
+    350ms background ease,
+    350ms color ease;
+    ;
+
+  /* State layer */
+  &::before {
+    content: '';
+    pointer-events: none;
+    border-radius: inherit;
+    position: absolute;
+    
+    inset: 0;
+    background-color: currentColor;
+    opacity: 0;
+
+    transition: 75ms opacity linear;
+  }
+
+  &:hover {
+    &::before {
+      opacity: var(--md-sys-state-hover-state-layer-opacity, 0.08);
+    }
+  }
+
+  &:active {
+    &::before {
+      opacity: var(--md-sys-state-pressed-state-layer-opacity, 0.1);
+    }
+  }
+
+  /* Touch target */
+  &.xs, &.sm {
+    &::after {
+      content: '';
+      pointer-events: all;
+      position: absolute;
+      height: 48px;
+      
+      inset: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      
+      outline: 1px dashed var(--debug-element-color, transparent);
+    }
+  }
+
+  &.xs {
+    padding: 0 12px;
+    height: 32px;
+
+    line-height: 20px;
+    font-size: 14px;
+    &.round {
+      border-radius: 16px;
+    }
+    &.square {
+      border-radius: 12px;
+    }
+    &:active {
+      border-radius: 8px;
+    }
+  }  
+  &.sm {
+    padding: 0 16px;
+    height: 40px;
+
+    line-height: 20px;
+    font-size: 14px;
+    &.round {
+      border-radius: 20px;
+    }
+    &.square {
+      border-radius: 12px;
+    }
+    &:active {
+      border-radius: 8px;
+    }
+  }
+  &.md {
+    padding: 0 24px;
+    height: 56px;
+
+    line-height: 24px;
+    font-size: 16px;
+    &.round {
+      border-radius: 28px;
+    }
+    &.square {
+      border-radius: 16px;
+    }
+    &:active {
+      border-radius: 12px;
+    }
+  }
+  &.lg {
+    padding: 0 48px;
+    height: 96px;
+
+    font-weight: 400;
+    line-height: 32px;
+    font-size: 24px;
+    &.round {
+      border-radius: 48px;
+    }
+    &.square {
+      border-radius: 28px;
+    }
+    &:active {
+      border-radius: 16px;
+    }
+  }
+  &.xl {
+    padding: 0 64px;
+    height: 136px;
+
+    font-weight: 400;
+    line-height: 40px;
+    font-size: 32px;
+    &.round {
+      border-radius: 68px;
+    }
+    &.square {
+      border-radius: 28px;
+    }
+    &:active {
+      border-radius: 16px;
+    }
+  }
+
+  /* Color */
+  &.elevated {
+    --_level: 1;
+    background-color: var(--md-sys-color-surface-container-low);
+    color: var(--md-sys-color-primary);
+    &:hover {
+      --_level: 2;
+    }
+    &:active {
+      --_level: 1;
+    }
+  }
+  &.filled {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary)
+  }
+  &.tonal {
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container)
+  }
+  &.outlined {
+    border: 1px solid var(--md-sys-color-outline-variant);
+    color: var(--md-sys-color-on-surface-variant);
+  }
+  &.text {
+    color: var(--md-sys-color-primary);
+    outline: 1px dashed var(--debug-element-color, transparent);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--md-sys-color-secondary);
+    outline-offset: 3px;
+  }
+}
+
+aside {
+  z-index: 90;
+  background-color: var(--md-sys-color-surface-container-high);
+  max-width: 500px;
+  padding: 12px;
+  border-radius: 24px;
+
+  --_shadow-color-1: color-mix(in oklab, transparent, var(--md-sys-color-shadow) 30%);
+  --_shadow-color-2: color-mix(in oklab, transparent, var(--md-sys-color-shadow) 15%);
+  
+  --_level: 3;
+
+  box-shadow:
+    0px calc(1px*(clamp(0,var(--_level),1)
+      + clamp(0,var(--_level) - 3,1)
+      + 2*clamp(0,var(--_level) - 4,1)))
+    calc(1px*(2*clamp(0,var(--_level),1)
+      + clamp(0,var(--_level) - 2,1)
+      + clamp(0,var(--_level) - 4,1)))
+    0px var(--_shadow-color-1),
+
+    0px calc(1px*(clamp(0,var(--_level),1)
+      + clamp(0,var(--_level) - 1,1)
+      + 2*clamp(0,var(--_level) - 2,3)))
+    calc(1px*(3*clamp(0,var(--_level),2)
+      + 2*clamp(0,var(--_level) - 2,3)))
+    calc(1px*(clamp(0,var(--_level),4)
+      + 2*clamp(0,var(--_level) - 4,1)))
+      var(--_shadow-color-2);
+}
+
+@media only screen and (min-width: 600px) {
+  aside {
+    inset-inline-end: 32px;
+    position: fixed;
+  }
+}
+
+* {
+  transition: 350ms background ease, 350ms color ease;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);  
+}
